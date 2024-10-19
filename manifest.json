@@ -7,7 +7,7 @@
   "host_permissions": ["<all_urls>"],
   "content_scripts":[
     {
-      "matches": ["https://*.google.com/*"],
+      "matches": ["https://www.google.com/*"],
       "js": ["content.js"]
     }
   ],
@@ -16,5 +16,9 @@
   },
   "externally_connectable": {
     "matches": ["<all_urls>"]
-  }
+  },
+  "web_accessible_resources": [{
+    "matches": ["<all_urls>"],
+    "resources": ["no_robots.png"]
+}]
 }
