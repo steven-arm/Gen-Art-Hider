@@ -24,8 +24,6 @@ function is_images_page(){
     return false;
 }
 
-
-
 function hide_images(){
     var image_url = chrome.runtime.getURL('no_robots.png');
     const images = document.querySelectorAll('.mNsIhb .YQ4gaf');
@@ -41,25 +39,25 @@ function hide_images(){
 
 function is_ai(image){
     const parent = image.closest('div.eA0Zlc.WghbWd.FnEtTd.mkpRId.m3LIae.RLdvSe.qyKxnc.ivg-i.PZPZlf.GMCzAd');
-    if (parent.dataset.lpage.toLowerCase().includes('ai')){
+    if (parent.dataset.lpage.toLowerCase().includes('.ai')){
         return true;
     }
     const spans = parent.querySelectorAll('span');
     for (let span of spans){
-        if (span.textContent.toLowerCase().includes('ai') || span.textContent.toLowerCase().includes('stable diffusion')){
+        if (span.textContent.toLowerCase().includes('ai') || span.textContent.toLowerCase().includes('stable diffusion') || span.textContent.toLowerCase().includes('gen')){
             return true;
         }
     }
 
     const titles = parent.querySelectorAll('div.toI8Rb.OSrXXb');
     for (let title of titles){
-        if (title.textContent.toLowerCase().includes('ai') || title.textContent.toLowerCase().includes('gen') || title.textContent.toLowerCase().includes('- playground')){
+        if (title.textContent.toLowerCase().includes(' ai') || title.textContent.toLowerCase().includes('ai ') || title.textContent.toLowerCase().includes('gen') || title.textContent.toLowerCase().includes('- playground')){
             return true;
         }
     }
 
     const image_link = image.closest('a');
-    if (image_link.href.includes("ai") || image_link.href.includes("playground.com")){
+    if (image_link.href.toLowerCase().includes(".ai") || image_link.href.toLowerCase().includes("-ai") || image_link.href.includes("playground.com")){
         return true;
     }
     return false;
