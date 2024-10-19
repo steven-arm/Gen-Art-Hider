@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "AI Art Hider",
+  "version": "1.0.0",
+  "description": "A chrome extension that hides what is suspected to be AI Generated Art from Google Images",
+  "permissions": ["scripting", "activeTab", "tabs", "tabCapture", "windows"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts":[
+    {
+      "matches": ["https://*.google.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "externally_connectable": {
+    "matches": ["<all_urls>"]
+  }
+}
